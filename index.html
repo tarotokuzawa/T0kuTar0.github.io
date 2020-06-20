@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="utf-8">
+ <title>JavaScript Practice</title>
+<style>
+
+  body{
+    /* flex 横並び */
+    display: flex;
+    wrap は改行
+    flex-wrap: wrap; 
+  }
+  .box{
+    width: 100px;
+    height: 100px;
+    background-color: skyblue;
+    /* cursorはクリック感を出す */
+    cursor: pointer;
+    transition: 0.8s;
+    margin: 0 8px 8px 0;
+    text-align: center;
+    line-height: 100px
+  }
+      .win{
+        background-color: pink;
+        border-radius: 50%;
+        transform: rotate(360deg);
+      }
+      .lose{
+       transform: scale(0.9);
+      }
+</style>
+</head>
+<body>
+
+  <!-- id=""はscript要素を指摘する場合
+  <div class="box" id="target1">  </div>
+  <div class="box" id="target2">  </div>
+  <div class="box" id="target3">  </div> -->
+
+  <script>
+    // use strictは間違いがわかるやつ
+    'use strict';
+
+    const num = 10;
+    const winner = Math.floor(Math.random() * num); // 0 - 4
+
+    for(let i = 0; i < num; i++){
+
+      const div = document.createElement('div');
+      div.classList.add('box');
+
+      div.addEventListener('click' , () => {
+        if ( i  === winner) {
+          div.textContent = 'ぱん';
+          div.classList.toggle('win');
+        } else {
+          div.textContent = 'あほんこ!';
+          div.classList.toggle('lose');
+        }
+
+      });
+      document.body.appendChild(div);
+    }
+
+    //   // const 定数
+    // const target1 = document.getElementById('target1')
+    // const target2 = document.getElementById('target2')
+    // const target3 = document.getElementById('target3')
+
+    // // document. 指定したIDをもつ要素を文章全体から取得してね
+    // // Eventlistenerは何かが起きたら何らかの処理をする
+    // target1.addEventListener('click', () => {
+    //   target1.classList.toggle('circle');
+    // });
+    // target2.addEventListener('click', () => {
+    //   target2.classList.toggle('circle');
+    // });
+    // target3.addEventListener('click', () => {
+    //   target3.classList.toggle('circle');
+    // });
+
+  </script>
+</body>
+</html>
